@@ -6,15 +6,49 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.widget.ListView
+import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.navigation.NavigationView
 import pgl.vacationmanager.adapters.CasasListViewAdapter
 import pgl.vacationmanager.modelos.Casa
+import androidx.core.view.GravityCompat
+import android.view.MenuItem
+import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
+import pgl.vacationmanager.R
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    private lateinit var drawerLayout: DrawerLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
+        drawerLayout = findViewById(R.id.drawer_layout)
+        val navView: NavigationView = findViewById(R.id.nav_view)
+        navView.setNavigationItemSelectedListener(this)
+
+        // Agregar el ActionBarDrawerToggle
+        val actionBarDrawerToggle = ActionBarDrawerToggle(
+            this, drawerLayout, R.string.open_drawer, R.string.close_drawer
+        )
+
+        // Sincronizar el estado del toggle
+        drawerLayout.addDrawerListener(actionBarDrawerToggle)
+        actionBarDrawerToggle.syncState()
+
+        // Configurar la Toolbar (si aún no la tienes)
+        setSupportActionBar(findViewById(R.id.toolbar))
+
+        // Otros ajustes de la actividad
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -37,5 +71,36 @@ class MainActivity : AppCompatActivity() {
         )
         val adapter = CasasListViewAdapter(this, casas)
         listView.adapter = adapter
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.nav_reservations -> {
+                // Handle "Mis reservas" click
+                Toast.makeText(this, "Mis reservas", Toast.LENGTH_SHORT).show()
+            }
+            R.id.nav_dark_theme -> {
+                // Handle "Tema oscuro" click
+                Toast.makeText(this, "Tema oscuro", Toast.LENGTH_SHORT).show()
+            }
+            R.id.nav_light_theme -> {
+                // Handle "Tema claro" click
+                Toast.makeText(this, "Tema claro", Toast.LENGTH_SHORT).show()
+            }
+            R.id.nav_about -> {
+                // Handle "Acerca de" click
+                Toast.makeText(this, "Acerca de", Toast.LENGTH_SHORT).show()
+            }
+        }
+        drawerLayout.closeDrawer(GravityCompat.START)
+        return true
+    }
+
+    override fun onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
     }
 }
