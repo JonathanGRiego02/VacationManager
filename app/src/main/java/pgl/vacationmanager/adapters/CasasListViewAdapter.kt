@@ -27,15 +27,12 @@ class CasasListViewAdapter(private val context: Context, private val dataSource:
         val imageView = view.findViewById<ImageView>(R.id.item_image)
         val titleView = view.findViewById<TextView>(R.id.item_title)
         val subtitleView = view.findViewById<TextView>(R.id.item_subtitle)
-        val ratingBar = view.findViewById<RatingBar>(R.id.item_rating)
 
         val item = getItem(position) as Casa
 
         imageView.setImageResource(item.imageResId)
         titleView.text = item.house_name
         subtitleView.text = item.location
-        ratingBar.rating = item.rating
-
         return view
     }
 }

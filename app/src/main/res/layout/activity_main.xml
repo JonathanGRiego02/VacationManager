@@ -51,12 +51,15 @@
         app:layout_constraintTop_toTopOf="@id/eleccionTextView"
         app:layout_constraintBottom_toBottomOf="@id/eleccionTextView" />
 
-    <!-- Add this to res/layout/activity_main.xml -->
     <ListView
         android:id="@+id/casasListView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="16dp"
         app:layout_constraintTop_toBottomOf="@id/eleccionTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
