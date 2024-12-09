@@ -1,0 +1,6 @@
+<resources>
+    <declare-styleable name="Theme">
+        <attr name="drawerHeaderColor" format="color" />
+        <attr name="houseBorderColor" format="color" />
+    </declare-styleable>
+</resources>

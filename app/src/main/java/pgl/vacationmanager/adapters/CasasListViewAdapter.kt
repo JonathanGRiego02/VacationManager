@@ -1,19 +1,21 @@
 package pgl.vacationmanager.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
-import android.widget.RatingBar
 import android.widget.TextView
+import pgl.vacationmanager.CasaDetailActivity
 import pgl.vacationmanager.R
 import pgl.vacationmanager.modelos.Casa
 
 class CasasListViewAdapter(private val context: Context, private val dataSource: List<Casa>) : BaseAdapter() {
 
-    private val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+    private val inflater: LayoutInflater =
+        context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
     override fun getCount(): Int = dataSource.size
 
@@ -31,8 +33,20 @@ class CasasListViewAdapter(private val context: Context, private val dataSource:
         val item = getItem(position) as Casa
 
         imageView.setImageResource(item.imageResId)
-        titleView.text = item.house_name
+        titleView.text = item.houseName
         subtitleView.text = item.location
+
+        view.setOnClickListener {
+            val intent = Intent(context, CasaDetailActivity::class.java).apply {
+                putExtra("imageResId", item.imageResId)
+                putExtra("house_name", item.houseName)
+                putExtra("location", item.location)
+                putExtra("rating", item.rating)
+                putExtra("longDescription", item.longDescription)
+            }
+            context.startActivity(intent)
+        }
+
         return view
     }
 }

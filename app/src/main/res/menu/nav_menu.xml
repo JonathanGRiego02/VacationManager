@@ -1,0 +1,28 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item
+        android:id="@+id/nav_reservas"
+        android:title="@string/mis_reservas" />
+
+    <item
+        android:id="@+id/nav_options"
+        android:title="@string/ajustes"
+        android:checkable="true" />
+
+    <group
+        android:id="@+id/group_ajustes"
+        android:visible="false"> <!-- Initially hidden -->
+        <item
+            android:id="@+id/nav_tema_claro"
+            android:title="@string/tema_claro" />
+        <item
+            android:id="@+id/nav_tema_oscuro"
+            android:title="@string/tema_oscuro" />
+    </group>
+
+    <item
+        android:id="@+id/nav_salir"
+        android:title="@string/salir" />
+</menu>

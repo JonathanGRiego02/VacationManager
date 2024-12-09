@@ -2,4 +2,20 @@
     <string name="app_name">EnSueño</string>
     <string name="open_drawer">Abrir menú</string>
     <string name="close_drawer">Cerrar menú</string>
+    <string name="mis_reservas">Mis reservas</string>
+    <string name="ajustes">Ajustes</string>
+    <string name="tema_oscuro">Tema oscuro</string>
+    <string name="tema_claro">Tema claro</string>
+    <string name="acerca_de">Acerca de</string>
+    <string name="salir">Salir</string>
+    <string name="abrir">Abrir</string>
+    <string name="cerrar">Cerrar</string>
+    <string name="location_text">Ubicación: %1$s</string>
+    <string name="reservar">Reservar</string>
+    <string name="name_hint">Nombre</string>
+    <string name="email_hint">Email</string>
+    <string name="fecha_de_entrada_hint">Fecha de entrada</string>
+    <string name="hora_de_entrada_hint">Hora de entrada</string>
+    <string name="fecha_de_salida_hint">Fecha de salida</string>
+    <string name="borrar">Borrar\n</string>
 </resources>
